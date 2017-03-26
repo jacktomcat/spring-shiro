@@ -1,6 +1,7 @@
 package com.chsoft.shiro.facade.service;
 
 import java.util.List;
+
 import com.chsoft.shiro.facade.entity.Permission;
 import com.chsoft.shiro.facade.entity.Role;
 import com.chsoft.shiro.facade.entity.User;

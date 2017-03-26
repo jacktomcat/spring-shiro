@@ -19,6 +19,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.util.CollectionUtils;
 import org.apache.shiro.util.StringUtils;
+import com.chsoft.shiro.facade.entity.Permission;
+import com.chsoft.shiro.facade.entity.Role;
+import com.chsoft.shiro.facade.service.UserService;
 import org.jasig.cas.client.authentication.AttributePrincipal;
 import org.jasig.cas.client.validation.Assertion;
 import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;
@@ -30,9 +33,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.chsoft.shiro.facade.entity.Permission;
-import com.chsoft.shiro.facade.entity.Role;
-import com.chsoft.shiro.facade.service.UserService;
 
 /**
  * This realm implementation acts as a CAS client to a CAS server for authentication and basic authorization.

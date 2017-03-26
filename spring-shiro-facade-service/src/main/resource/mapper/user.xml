@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chsoft.shiro.facade.dao.UserDao">
+
+	<resultMap type="User" id="User">
+		<id property="id" column="id" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="mobile" column="mobile" />
+	</resultMap>
+
+	<select id="getEntityById" resultMap="User" parameterType="int">
+		select * from user where id=#{id}
+	</select>
+	
+	<select id="getUserByUserName" resultMap="User" parameterType="User">
+		select * from user where user_name = #{userName}
+			<if test="id!=0">
+				and id!=#{id}
+			</if>
+	</select>
+	
+	<!-- 启用状态账号 -->
+	<select id="getLoginUser" resultMap="User" parameterType="string">
+		select * from user where user_name = #{userName}
+	</select>
+
+	<select id="getListByEntity" resultMap="User" parameterType="User">
+		select * from user
+		<where>
+			1=1
+			<if test="userName!=null">
+				and user_name like CONCAT('%',#{userName},'%')
+			</if>
+		</where>
+	</select>
+	
+		<insert id="save" parameterType="User">
+	   insert into user(
+	            user_name,
+	            password,
+	            mobile,
+	            email
+	            ) values (
+	            #{userName},
+	            #{password},
+	            #{mobile},
+	            #{email}
+	            )
+	</insert>
+	
+	<update id="update" parameterType="User">
+		update user
+		<set>
+			<if test="userName!=null">
+				user_name=#{userName},
+			</if>
+			<if test="password!=null">
+				password=#{password},
+			</if>
+			<if test="mobile!=null">
+				mobile=#{mobile},
+			</if>
+			<if test="email!=null">
+				email=#{email}
+			</if>
+			
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteByEntity" parameterType="User">
+	  delete from user where id = #{id}
+	</delete>
+
+    <select id="getUsers" resultMap="User">
+		SELECT * FROM USER WHERE status=1 
+	</select>
+    
+</mapper>

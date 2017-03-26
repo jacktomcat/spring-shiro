@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.chsoft.shiro.facade.entity.User;
-
 
 @Controller
 @RequestMapping("/")
@@ -19,22 +17,22 @@ public class UserLoginController {
 
 	@RequestMapping("login.do")
   	public String login(HttpServletRequest request,Model model) throws Exception{
-		// Èç¹ûµÇÂ½Ê§°Ü´ÓrequestÖÐ»ñÈ¡ÈÏÖ¤Òì³£ÐÅÏ¢£¬shiroLoginFailure¾ÍÊÇshiroÒì³£ÀàµÄÈ«ÏÞ¶¨Ãû
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Â½Ê§ï¿½Ü´ï¿½requestï¿½Ð»ï¿½È¡ï¿½ï¿½Ö¤ï¿½ì³£ï¿½ï¿½Ï¢ï¿½ï¿½shiroLoginFailureï¿½ï¿½ï¿½ï¿½shiroï¿½ì³£ï¿½ï¿½ï¿½È«ï¿½Þ¶ï¿½ï¿½ï¿½
 		String exceptionClassName = (String) request.getAttribute("errorCodeFailure");
-		// ¸ù¾Ýshiro·µ»ØµÄÒì³£ÀàÂ·¾¶ÅÐ¶Ï£¬Å×³öÖ¸¶¨Òì³£ÐÅÏ¢
+		// ï¿½ï¿½ï¿½ï¿½shiroï¿½ï¿½ï¿½Øµï¿½ï¿½ì³£ï¿½ï¿½Â·ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½×³ï¿½Ö¸ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Ï¢
 		if (exceptionClassName != null) {
 			if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
-				model.addAttribute("error", "ÕËºÅ²»´æÔÚ");//×îÖÕ»áÅ×¸øÒì³£´¦ÀíÆ÷
+				model.addAttribute("error", "ï¿½ËºÅ²ï¿½ï¿½ï¿½ï¿½ï¿½");//ï¿½ï¿½ï¿½Õ»ï¿½ï¿½×¸ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			} else if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
-				model.addAttribute("error", "ÓÃ»§Ãû/ÃÜÂë´íÎó");
+				model.addAttribute("error", "ï¿½Ã»ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			} else if ("randomCodeError".equals(exceptionClassName)) {
-				model.addAttribute("error", "ÑéÖ¤Âë´íÎó ");
+				model.addAttribute("error", "ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ ");
 			} else {
-				model.addAttribute("error", "Î´Öª´íÎó");
+				model.addAttribute("error", "Î´Öªï¿½ï¿½ï¿½ï¿½");
 			}
 		}
-		// ´Ë·½·¨²»´¦ÀíµÇÂ½³É¹¦£¨ÈÏÖ¤³É¹¦£©£¬shiroÈÏÖ¤³É¹¦»á×Ô¶¯Ìø×ªµ½ÉÏÒ»¸öÇëÇóÂ·¾¶
-		// µÇÂ½Ê§°Ü»¹µ½loginÒ³Ãæ
+		// ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½shiroï¿½ï¿½Ö¤ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+		// ï¿½ï¿½Â½Ê§ï¿½Ü»ï¿½ï¿½ï¿½loginÒ³ï¿½ï¿½
 		return "login";
 	}
 	

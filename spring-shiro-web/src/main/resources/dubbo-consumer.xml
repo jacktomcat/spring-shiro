@@ -8,5 +8,5 @@
 
     <dubbo:reference id="userService" interface="com.chsoft.shiro.facade.service.UserService" check="false" timeout="5000"/>
     
-    <import resource="spring-shiro.xml"/>
+    <!-- <import resource="spring-shiro.xml"/> -->
 </beans>
