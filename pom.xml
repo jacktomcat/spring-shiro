@@ -22,4 +22,8 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <modules>
+  	<module>spring-shiro-facade-service</module>
+  	<module>spring-shiro-web</module>
+  </modules>
 </project>
